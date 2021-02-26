@@ -3,26 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/PermissionsFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.automessage.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/PermissionsFragment"
+        android:name="com.example.automessage.PermissionsFragment"
+        android:label="@string/permissions_fragment_label"
+        tools:layout="@layout/fragment_permissions">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_PermissionsFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.automessage.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/MainFragment"
+        android:name="com.example.automessage.MainFragment"
+        android:label="@string/main_fragment_label"
+        tools:layout="@layout/fragment_main">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_MainFragment_to_PermissionsFragment"
+            app:destination="@id/PermissionsFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_FiltersFragment"
+            app:destination="@id/FiltersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FiltersFragment"
+        android:name="com.example.automessage.FiltersFragment"
+        android:label="@string/filters_fragment_label"
+        tools:layout="@layout/fragment_filters">
+
+        <action
+            android:id="@+id/action_FiltersFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
     </fragment>
 </navigation>

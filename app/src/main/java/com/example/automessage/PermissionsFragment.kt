@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
@@ -16,7 +15,7 @@ import androidx.navigation.fragment.findNavController
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class PermissionsFragment : Fragment() {
     val REQUEST_CODE = 9009;
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +23,7 @@ class FirstFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false)
+        return inflater.inflate(R.layout.fragment_permissions, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,9 +33,7 @@ class FirstFragment : Fragment() {
 
         if(isSMSPermissionGranted()) {
             permissionTextView.visibility = View.GONE
-            view.findViewById<Button>(R.id.button_first)?.setOnClickListener {
-                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-            }
+            findNavController().navigate(R.id.action_PermissionsFragment_to_MainFragment)
         }
         else
             requestPermissions(
@@ -51,9 +48,7 @@ class FirstFragment : Fragment() {
         grantResults: IntArray
     ) {
         if(grantResults.isNotEmpty() && grantResults[1]==PackageManager.PERMISSION_GRANTED){
-            view?.findViewById<Button>(R.id.button_first)?.setOnClickListener {
-                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-            }
+                findNavController().navigate(R.id.action_PermissionsFragment_to_MainFragment)
         }
         else if(!shouldShowRequestPermissionRationale(permissions[0]))
             showPermissionAlwaysDeniedAlertDialog()

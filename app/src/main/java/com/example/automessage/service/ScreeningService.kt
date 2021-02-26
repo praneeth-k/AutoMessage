@@ -8,7 +8,6 @@ import android.telecom.CallScreeningService
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 
-@RequiresApi(Build.VERSION_CODES.N)
 class ScreeningService: CallScreeningService() {
     override fun onScreenCall(callDetails: Call.Details) {
         val phoneNumber = callDetails.handle.schemeSpecificPart
